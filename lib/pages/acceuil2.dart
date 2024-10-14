@@ -1,6 +1,5 @@
-
 import 'package:amimobile5/pages/search.dart';
-import 'package:amimobile5/product.dart';
+import 'package:amimobile5/pages/product.dart';
 import 'package:flutter/material.dart';
 
 class EcommercePage extends StatelessWidget {
@@ -18,7 +17,6 @@ class EcommercePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        
         padding: const EdgeInsets.all(4.0),
         child: BottomAppBar(
           child: Padding(
