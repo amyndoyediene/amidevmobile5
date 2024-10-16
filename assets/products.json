@@ -1,0 +1,19 @@
+[
+    {
+      "name": "Produit 1",
+      "price": 29.99,
+      "imageUrl": "https://via.placeholder.com/150",
+      "description": "Description du produit 1",
+      "category": "Catégorie A",
+      "popularity": 50
+    },
+    {
+      "name": "Produit 2",
+      "price": 19.99,
+      "imageUrl": "https://via.placeholder.com/150",
+      "description": "Description du produit 2",
+      "category": "Catégorie B",
+      "popularity": 70
+    }
+  ]
+  

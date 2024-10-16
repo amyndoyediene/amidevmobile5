@@ -64,6 +64,13 @@ flutter:
    - assets/inscri.png
    - assets/amm.jpeg
    - assets/fat.jpg
+   - assets/products.json
+   - assets/a1.webp
+   - assets/a2.webp
+   - assets/a3.webp
+   - assets/a4.webp
+   - assets/shoppp.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

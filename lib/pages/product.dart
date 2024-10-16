@@ -6,6 +6,10 @@ class Product {
   final String imageUrl;
 
   Product({required this.name, required this.price, required this.imageUrl});
+
+  String? get description => null;
+
+  static fromJson(product) {}
 }
 
 class HomepPage extends StatelessWidget {

@@ -1,4 +1,5 @@
 import 'package:amimobile5/pages/acceuil2.dart';
+import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,16 +10,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: PanierPage(),
+    
+    
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class PanierPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Mon Panier'), // Titre de l'AppBar
+        centerTitle: true, // Centre le titre
+       backgroundColor: Color(0xFFFFC0CB), 
+        actions: [
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              // Action pour le panier
+            },
+          ),
+          
+        ],
+      ),
       backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -37,7 +55,7 @@ class HomePage extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/amm.jpeg'), // Assurez-vous que votre image est dans le dossier assets
+                      'assets/shoppp.jpg'), // Assurez-vous que votre image est dans le dossier assets
                   fit: BoxFit.cover,
                 ),
               ),
@@ -46,7 +64,7 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 20), // Espacement sous l'image
           // Texte en dessous de l'image
           Text(
-            'Bienvenue sur notre application',
+            'Votre panier est actuellement vide',
             style: TextStyle(
               color: Colors.white,
               fontSize: 18,
@@ -63,20 +81,18 @@ class HomePage extends StatelessWidget {
                 // Navigation vers une nouvelle page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => EcommercePage()),
+                  MaterialPageRoute(builder: (context) => MaisonPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Color(0xFFB0006B), // Couleur d'arrière-plan rose foncé
-
+                backgroundColor: Color(0xFF00CFFF), // Couleur du bouton
                 padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
               child: Text(
-                'Commencer',
+                'Retour a la boutique',
                 style: TextStyle(
                   fontSize: 18,
                   color: Colors.white,
