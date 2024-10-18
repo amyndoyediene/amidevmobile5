@@ -1,5 +1,5 @@
 import 'package:amimobile5/pages/acceuil2.dart';
-import 'package:amimobile5/pages/maison/maison1.dart';
+import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:flutter/material.dart';
 
@@ -29,10 +29,10 @@ class PanierPage extends StatelessWidget {
             icon: Icon(Icons.delete),
             onPressed: () {
               //Action pour le panier
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => EaPage()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => EaPage()),
+              // );
             },
           ),
         ],
@@ -80,11 +80,11 @@ class PanierPage extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 // Action quand on appuie sur le bouton
-                // Navigation vers une nouvelle page
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => EaPage()),
-                // );
+                //Navigation vers une nouvelle page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => EaPage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF00CFFF), // Couleur du bouton

@@ -65,10 +65,12 @@ flutter:
    - assets/amm.jpeg
    - assets/fat.jpg
    - assets/products.json
-   - assets/a1.webp
-   - assets/a2.webp
-   - assets/a3.webp
-   - assets/a4.webp
+   - assets/homme.jpeg
+   - assets/femme.jpeg
+   - assets/enfant.jpeg
+   - assets/cheveux.jpeg
+   - assets/parfum.jpeg
+   - assets/marque.png
    - assets/shoppp.jpg
    - assets/logoo.png
 

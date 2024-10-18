@@ -1,6 +1,6 @@
 import 'package:amimobile5/pages/maison/category.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
-import 'package:amimobile5/pages/maison/maison1.dart';
+import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:amimobile5/pages/search.dart';

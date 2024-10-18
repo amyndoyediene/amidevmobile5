@@ -6,8 +6,8 @@ class OffersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Vos Categorie'),
-        centerTitle: true,
+        // title: const Text('Vos Categorie'),
+        // centerTitle: true,
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart),
@@ -36,8 +36,26 @@ class OffersPage extends StatelessWidget {
               ),
             ),
             //
+
             // Ajout d'un espace vertical avec SizedBox
             SizedBox(height: 20), // Espace de 20 pixels
+
+            // Ajouter un titre juste après la barre de recherche
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Center(
+                child: Text(
+                  'Vos categories', // Titre après la barre de recherche
+                  style: TextStyle(
+                    fontSize: 20, // Taille du texte
+                    fontWeight: FontWeight.bold, // Mettre en gras
+                    color: Colors.pink, // Couleur du texte
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20), // Espace de 20 pixels
+
             // Section "Offres Électroménager"
             _buildSectionTitle('SOINS DU VISAGE'),
             _buildHorizontalProductList([
