@@ -70,6 +70,7 @@ flutter:
    - assets/a3.webp
    - assets/a4.webp
    - assets/shoppp.jpg
+   - assets/logoo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

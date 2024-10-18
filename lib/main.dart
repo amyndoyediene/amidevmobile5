@@ -1,9 +1,7 @@
 import 'package:amimobile5/pages/acceuil1.dart';
 import 'package:amimobile5/pages/acceuil2.dart';
+import 'package:amimobile5/pages/maison/compte.dart';
 import 'package:amimobile5/pages/search.dart';
-import 'package:amimobile5/pages/product.dart';
-import 'package:amimobile5/pages/home/home.dart';
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -24,8 +22,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(),
         '/acceuil2': (context) => EcommercePage(),
         '/search': (context) => SearchPage(),
-        '/product': (context) => HomepPage(),
-        '/home': (context) => HomePage1(),
+        '/account': (context) => ComptePage(),
       },
     );
   }

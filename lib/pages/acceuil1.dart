@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/amm.jpeg'), // Assurez-vous que votre image est dans le dossier assets
+                      'assets/logoo.png'), // Assurez-vous que votre image est dans le dossier assets
                   fit: BoxFit.cover,
                 ),
               ),

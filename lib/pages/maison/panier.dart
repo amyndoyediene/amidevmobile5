@@ -1,4 +1,5 @@
 import 'package:amimobile5/pages/acceuil2.dart';
+import 'package:amimobile5/pages/maison/maison1.dart';
 import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: PanierPage(),
-    
-    
     );
   }
 }
@@ -24,15 +23,18 @@ class PanierPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Mon Panier'), // Titre de l'AppBar
         centerTitle: true, // Centre le titre
-       backgroundColor: Color(0xFFFFC0CB), 
+        backgroundColor: Color(0xFFFFC0CB),
         actions: [
           IconButton(
             icon: Icon(Icons.delete),
             onPressed: () {
-              // Action pour le panier
+              //Action pour le panier
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EaPage()),
+              );
             },
           ),
-          
         ],
       ),
       backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
@@ -79,10 +81,10 @@ class PanierPage extends StatelessWidget {
               onPressed: () {
                 // Action quand on appuie sur le bouton
                 // Navigation vers une nouvelle page
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MaisonPage()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => EaPage()),
+                // );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF00CFFF), // Couleur du bouton

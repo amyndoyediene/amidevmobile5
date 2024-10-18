@@ -1,9 +1,9 @@
-import 'package:amimobile5/pages/maison/categori.dart';
+import 'package:amimobile5/pages/maison/category.dart';
+import 'package:amimobile5/pages/maison/compte.dart';
+import 'package:amimobile5/pages/maison/maison1.dart';
 import 'package:amimobile5/pages/maison/maison.dart';
 import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:amimobile5/pages/search.dart';
-import 'package:amimobile5/pages/product.dart';
-import 'package:amimobile5/pages/home/home.dart';
 import 'package:flutter/material.dart';
 
 class EcommercePage extends StatelessWidget {
@@ -36,7 +36,7 @@ class EcommercePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MaisonPage()),
+                      MaterialPageRoute(builder: (context) => EaPage()),
                     );
                   },
                 ),
@@ -58,7 +58,7 @@ class EcommercePage extends StatelessWidget {
                     // Action pour le bouton
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CategoryPage()),
+                      MaterialPageRoute(builder: (context) => OffersPage()),
                     );
                   },
                 ),
@@ -78,6 +78,10 @@ class EcommercePage extends StatelessWidget {
                   label: 'Compte',
                   onPressed: () {
                     // Action pour le bouton
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ComptePage()),
+                    );
                   },
                 ),
               ],
