@@ -1,12 +1,13 @@
+import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:flutter/material.dart';
 
 class EaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink, // Fond rose
+      backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
       appBar: AppBar(
-        backgroundColor: Colors.pink, // Fond rose
+        backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -34,6 +35,10 @@ class EaPage extends StatelessWidget {
                   icon: Icon(Icons.shopping_cart),
                   onPressed: () {
                     // Action pour le panier
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PanierPage()),
+                    );
                   },
                 ),
                 IconButton(
@@ -64,7 +69,7 @@ class EaPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // Section des produits avec images cliquables
-            _buildSectionTitle('Nos Produits'),
+            _buildSectionTitle('Vos marques preferes'),
             _buildProductGrid(context),
           ],
         ),
@@ -87,7 +92,7 @@ class EaPage extends StatelessWidget {
       ),
     );
   }
-
+///////////////
   // Fonction pour générer une grille de produits
   Widget _buildProductGrid(BuildContext context) {
     return Padding(
@@ -99,12 +104,12 @@ class EaPage extends StatelessWidget {
         mainAxisSpacing: 10,
         physics: NeverScrollableScrollPhysics(), // Évite les conflits de scroll
         children: [
-          _buildProductItem(context, 'Homme', 'assets/homme.jpeg'),
-          _buildProductItem(context, 'Femme', 'assets/femme.jpeg'),
-          _buildProductItem(context, 'Enfant', 'assets/enfant.jpeg'),
-          _buildProductItem(context, 'Parfum', 'assets/parfum.jpeg'),
-          _buildProductItem(context, 'Cheveux', 'assets/cheveux.jpeg'),
-          _buildProductItem(context, 'Marque', 'assets/marque.png'),
+          _buildProductItem(context, 'Amazon', 'assets/amazon.png'),
+          _buildProductItem(context, 'Voiture', 'assets/toyota.jpeg'),
+          _buildProductItem(context, 'Parfum', 'assets/markpar.jpg'),
+          _buildProductItem(context, 'boisson', 'assets/parfum.jpeg'),
+          _buildProductItem(context, 'Cheveux', 'assets/markchev.png'),
+          _buildProductItem(context, 'Telephone', 'assets/markpho.jpeg'),
           //   _buildProductItem(context, 'Produit 4', 'assets/inscri.png'),
           //   _buildProductItem(context, 'Produit 4', 'assets/inscri.png'),
         ],

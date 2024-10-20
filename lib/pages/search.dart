@@ -6,7 +6,9 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
       appBar: AppBar(
+        backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
         title: Text('Recherche'),
         centerTitle: true,
       ),

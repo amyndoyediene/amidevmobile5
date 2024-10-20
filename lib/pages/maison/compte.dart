@@ -6,7 +6,9 @@ class ComptePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
       appBar: AppBar(
+        backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
         title: Text('Compte'), // Le titre de la page dans l'AppBar
       ),
       body: Padding(
@@ -50,8 +52,7 @@ class ComptePage extends StatelessWidget {
                     // Logique pour le deuxième bouton
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => creerPage()),
+                      MaterialPageRoute(builder: (context) => creerPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

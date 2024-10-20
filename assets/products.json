@@ -1,20 +1,75 @@
 [
-  {
-    "id": 1,
-    "name": "Produit 1",
-    "price": 19.99,
-    "description": "Description du produit 1",
-    "image": "assets/images/produit1.png",
-    "category": "Catégorie A",
-    "popularity": 4.5
-  },
-  {
-    "id": 2,
-    "name": "Produit 2",
-    "price": 29.99,
-    "description": "Description du produit 2",
-    "image": "assets/images/produit2.png",
-    "category": "Catégorie B",
-    "popularity": 3.8
-  }
+    {
+      "id": 1,
+      "name": "Hommee",
+      "price": 19.99,
+      "description": "Description du produit 1",
+      "image": "assets/homme.jpeg",
+      "category": "Pour homme",
+      "popularity": 9.5
+    },
+    {
+      "id": 2,
+      "name": "Femmee",
+      "price": 29.99,
+      "description": "Description du produit 2",
+      "image": "assets/femme.jpeg",
+      "category": "Pour femme",
+      "popularity": 10.8
+    },
+    {
+      "id": 3,
+      "name": "Enfant",
+      "price": 39.99,
+      "description": "Description du produit 1",
+      "image": "assets/enfant.jpeg",
+      "category": "Pour femme",
+      "popularity": 45.5
+    },
+    {
+      "id": 4,
+      "name": "Maquillage",
+      "price": 39.99,
+      "description": "Description du produit 1",
+      "image": "assets/maqui.jpeg",
+      "category": "Pour femme",
+      "popularity": 12.5
+    },
+    {
+      "id": 5,
+      "name": "Parfum",
+      "price": 49.99,
+      "description": "Description du produit 2",
+      "image": "assets/parfum.jpeg",
+      "category": "Pour homme",
+      "popularity": 3.8
+    },
+    {
+      "id": 6,
+      "name": "Marque",
+      "price": 49.99,
+      "description": "Description du produit 2",
+      "image": "assets/marque.png",
+      "category": "Pour homme",
+      "popularity": 17.8
+    },
+    {
+      "id": 7,
+      "name": "soins du visage",
+      "price": 39.99,
+      "description": "Description du produit 1 Description du produit 1 Description du produit 1 ",
+      "image": "assets/soinscorps.jpeg",
+      "category": "Pour femme",
+      "popularity": 9.5
+    },
+    
+    {
+      "id": 9,
+      "name": "Soins du corps",
+      "price": 39.99,
+      "description": "Description du produit 1",
+      "image": "assets/soinsvisage.jpeg",
+      "category": "Pour femme",
+      "popularity": 4.5
+    }
 ]

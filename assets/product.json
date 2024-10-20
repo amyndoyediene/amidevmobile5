@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "homme",
+    "price": 19.99,
+    "description": "les produits pour homme",
+    "image": "assets/images/produit1.png",
+    "category": "Catégorie A",
+    "popularity": 4.5
+  },
+  {
+    "id": 2,
+    "name": "Femme",
+    "price": 29.99,
+    "description": "les produits pour femme",
+    "image": "assets/images/produit2.png",
+    "category": "Catégorie B",
+    "popularity": 3.8
+  }
+]

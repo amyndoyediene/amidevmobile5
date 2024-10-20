@@ -1,7 +1,8 @@
+import 'package:amimobile5/pages/hoome.dart';
 import 'package:amimobile5/pages/maison/category.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
-import 'package:amimobile5/pages/maison/maison.dart';
-import 'package:amimobile5/pages/maison/maison.dart';
+import 'package:amimobile5/pages/maison/marque.dart';
+import 'package:amimobile5/pages/maison/marque.dart';
 import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:amimobile5/pages/search.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +13,15 @@ class EcommercePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
       appBar: AppBar(
+        backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
         title: const Text('Accueil'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'Bienvenue sur notre plateforme e-commerce',
+          'Bienvenue sur notre plateforme e-commerce Amsashop , appellez au 70 656 76 54 pour commander ',
           style: TextStyle(fontSize: 20.0),
         ),
       ),
@@ -36,7 +39,7 @@ class EcommercePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => EaPage()),
+                      MaterialPageRoute(builder: (context) => HoomePage()),
                     );
                   },
                 ),
@@ -47,7 +50,7 @@ class EcommercePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SearchPage()),
+                      MaterialPageRoute(builder: (context) => EaPage()),
                     );
                   },
                 ),

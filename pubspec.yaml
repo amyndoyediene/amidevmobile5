@@ -73,6 +73,15 @@ flutter:
    - assets/marque.png
    - assets/shoppp.jpg
    - assets/logoo.png
+   - assets/maqui.jpeg
+   - assets/markpar.jpg
+   - assets/toyota.jpeg
+   - assets/amazon.png
+   - assets/soinscorps.jpeg
+   - assets/soinsvisage.jpeg
+   - assets/markchev.png
+   - assets/markpho.jpeg
+   
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
