@@ -2,7 +2,6 @@ import 'package:amimobile5/pages/acceuil2.dart';
 import 'package:amimobile5/pages/hoome.dart';
 import 'package:amimobile5/pages/maison/marque.dart';
 import 'package:amimobile5/pages/maison/marque.dart';
-import 'package:amimobile5/pages/search.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,12 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PanierPage(),
+      home: PanierePage(),
     );
   }
 }
 
-class PanierPage extends StatelessWidget {
+class PanierePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +30,10 @@ class PanierPage extends StatelessWidget {
             icon: Icon(Icons.delete),
             onPressed: () {
               //Action pour le panier
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SearchPage()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => SearchPage()),
+              // );
             },
           ),
         ],
@@ -103,6 +102,41 @@ class PanierPage extends StatelessWidget {
                 ),
               ),
             ),
+            //
+
+            //
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50.0),
+            child: ElevatedButton(
+              onPressed: () {
+                // Action quand on appuie sur le bouton
+                //Navigation vers une nouvelle page
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //       builder: (context) => OrderValidationPage()),
+                // );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF00CFFF), // Couleur du bouton
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: Text(
+                'Valider votre commande',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            //
+
+            //
           ),
         ],
       ),

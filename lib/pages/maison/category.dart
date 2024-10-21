@@ -17,7 +17,7 @@ class OffersPage extends StatelessWidget {
               // Action pour le panier
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => PanierPage()),
+                MaterialPageRoute(builder: (context) => PanierePage()),
               );
             },
           ),

@@ -4,11 +4,29 @@ import 'package:amimobile5/pages/maison/compte.dart';
 import 'package:amimobile5/pages/maison/marque.dart';
 import 'package:amimobile5/pages/maison/marque.dart';
 import 'package:amimobile5/pages/maison/panier.dart';
-import 'package:amimobile5/pages/search.dart';
 import 'package:flutter/material.dart';
 
-class EcommercePage extends StatelessWidget {
+class EcommercePage extends StatefulWidget {
   const EcommercePage({super.key});
+
+  @override
+  _EcommercePageState createState() => _EcommercePageState();
+}
+
+class _EcommercePageState extends State<EcommercePage> {
+  List<Product> panier = []; // Définir la variable panier
+  int totalItemsInCart = 0; // Pour suivre le nombre d'articles
+
+  // Fonction pour mettre à jour le panier
+  void _updateCart(List<Product> updatedCart) {
+    setState(() {
+      panier = updatedCart;
+      totalItemsInCart = panier.fold(
+          0,
+          (sum, item) =>
+              sum + item.quantity); // Mettre à jour le nombre d'articles
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +39,7 @@ class EcommercePage extends StatelessWidget {
       ),
       body: const Center(
         child: Text(
-          'Bienvenue sur notre plateforme e-commerce Amsashop , appellez au 70 656 76 54 pour commander ',
+          'Bienvenue sur notre plateforme e-commerce Amsashop, appelez au 70 656 76 54 pour commander',
           style: TextStyle(fontSize: 20.0),
         ),
       ),
@@ -35,7 +53,7 @@ class EcommercePage extends StatelessWidget {
                 _buildBottomNavButton(
                   icon: Icons.home,
                   label: 'Accueil',
-                  iconColor: Colors.pink, // Couleur rose pour l'icône
+                  iconColor: Colors.pink,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -46,7 +64,7 @@ class EcommercePage extends StatelessWidget {
                 _buildBottomNavButton(
                   icon: Icons.search,
                   label: 'Rechercher',
-                  iconColor: Colors.pink, // Couleur rose pour l'icône
+                  iconColor: Colors.pink,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -58,7 +76,6 @@ class EcommercePage extends StatelessWidget {
                   icon: Icons.category,
                   label: 'Categorie',
                   onPressed: () {
-                    // Action pour le bouton
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => OffersPage()),
@@ -69,10 +86,14 @@ class EcommercePage extends StatelessWidget {
                   icon: Icons.shopping_basket,
                   label: 'Panier',
                   onPressed: () {
-                    // Action pour le bouton
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => PanierPage()),
+                      MaterialPageRoute(
+                        builder: (context) => PanierPage(
+                          panier: panier,
+                          onPanierUpdate: _updateCart,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -80,7 +101,6 @@ class EcommercePage extends StatelessWidget {
                   icon: Icons.account_balance,
                   label: 'Compte',
                   onPressed: () {
-                    // Action pour le bouton
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ComptePage()),
@@ -95,19 +115,18 @@ class EcommercePage extends StatelessWidget {
     );
   }
 
-//des widget pour colorer l'icone
   Widget _buildBottomNavButton({
     required IconData icon,
     required String label,
     required VoidCallback onPressed,
-    Color iconColor = Colors.pink, // Paramètre pour la couleur de l'icône
+    Color iconColor = Colors.pink,
   }) {
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           IconButton(
-            icon: Icon(icon, color: iconColor), // Utilisation de iconColor
+            icon: Icon(icon, color: iconColor),
             onPressed: onPressed,
             iconSize: 24.0,
           ),
@@ -122,8 +141,3 @@ class EcommercePage extends StatelessWidget {
     );
   }
 }
-
-void main() => runApp(const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: EcommercePage(),
-    ));
