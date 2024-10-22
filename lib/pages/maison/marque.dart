@@ -34,27 +34,35 @@ class _EaPageState extends State<EaPage> {
       totalItemsInCart++; // Augmenter le nombre d'articles
     });
 
-    // Afficher un message d'alerte lorsqu'un produit est ajouté
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Produit ajouté au panier"),
-          content: Text("${product.name} a été ajouté au panier avec succes."),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text("OK"),
+    // Envoyer une notification locale
+    // NotificationService.showNotification(
+    //   title: "Produit ajouté",
+    //   body: "${product.name} a été ajouté au panier.",
+    // );
+    // Afficher une notification Snackbar lorsque le produit est ajouté
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text("${product.name} a été ajouté au panier avec succès."),
+      duration: Duration(seconds: 2), // Durée d'affichage de la notification
+      action: SnackBarAction(
+        label: 'Voir le panier',
+        onPressed: () {
+          // Naviguer vers la page du panier
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PanierPage(
+                panier: panier,
+                onPanierUpdate: _updateCart,
+              ),
             ),
-          ],
-        );
-      },
-    );
-  }
-
-  // Fonction pour mettre à jour le panier
+          );
+        },
+      ),
+    ),
+  );
+}
+ // Fonction pour mettre à jour le panier
   void _updateCart(List<Product> updatedCart) {
     setState(() {
       panier = updatedCart;
@@ -288,12 +296,6 @@ class _EaPageState extends State<EaPage> {
       ),
     );
   }
-
-  // void _updateCart(List<Product> updatedCart) {
-  //   setState(() {
-  //     panier = updatedCart;
-  //   });
-  // }
 }
 
 // Page du panier
@@ -400,6 +402,13 @@ class _PanierPageState extends State<PanierPage> {
                               ),
                             ),
                           );
+                          
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Commande validée avec succès."),
+        duration: Duration(seconds: 2),
+      ),
+    );
                         },
                         child: Text('Valider la commande'),
                         style: ElevatedButton.styleFrom(

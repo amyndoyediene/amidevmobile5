@@ -2,8 +2,17 @@ import 'package:amimobile5/pages/acceuil1.dart';
 import 'package:amimobile5/pages/acceuil2.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
 import 'package:flutter/material.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:amimobile5/pages/maison/notifications_service.dart';
 
-void main() => runApp(MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //NotificationService.initialize(); // Initialisation des notifications
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

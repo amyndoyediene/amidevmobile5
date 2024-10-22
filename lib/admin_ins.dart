@@ -1,5 +1,6 @@
 import 'package:amimobile5/admin_wel.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MyApp());
