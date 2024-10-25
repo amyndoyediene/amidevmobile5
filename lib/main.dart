@@ -9,8 +9,17 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //NotificationService.initialize(); // Initialisation des notifications
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+   WidgetsFlutterBinding.ensureInitialized(
+    // options: FirebaseOptions(
+    //   apiKey: "VOTRE_API_KEY",
+    //   authDomain: "VOTRE_AUTH_DOMAIN",
+    //   projectId: "VOTRE_PROJECT_ID",
+    //   storageBucket: "VOTRE_STORAGE_BUCKET",
+    //   messagingSenderId: "VOTRE_MESSAGING_SENDER_ID",
+    //   appId: "VOTRE_APP_ID",
+    // ),
+   );
+    // await Firebase.initializeApp();
   runApp(MyApp());
 }
 

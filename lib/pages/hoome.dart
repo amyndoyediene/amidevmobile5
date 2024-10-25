@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'product_model.dart';
@@ -61,10 +60,10 @@ class _HomePageState extends State<HoomePage> {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               // Action pour le panier
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PanierePage()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => PanierePage()),
+              // );
             },
           ),
         ],

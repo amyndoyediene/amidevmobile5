@@ -1,4 +1,7 @@
+//import 'package:amimobile5/pages/maison/cmdhisto.dart';
+import 'package:amimobile5/pages/maison/cmdhisto.dart';
 import 'package:amimobile5/pages/maison/cmdvalide.dart';
+//import 'package:amimobile5/pages/maison/order_model.dart';
 import 'package:flutter/material.dart';
 
 // Modèle de produit pour simplifier la gestion des produits
@@ -7,6 +10,7 @@ class Product {
   final String imagePath;
   final String description;
   final double price;
+  final String category; // Nouvelle propriété catégorie
   int quantity;
 
   Product({
@@ -15,6 +19,7 @@ class Product {
     required this.description,
     required this.price,
     this.quantity = 1,
+    required this.category, // Ajout de la catégorie
   });
 }
 
@@ -26,6 +31,9 @@ class EaPage extends StatefulWidget {
 class _EaPageState extends State<EaPage> {
   List<Product> panier = [];
   int totalItemsInCart = 0; // Variable pour suivre le nombre total d'articles
+  List<Product> products = []; // La liste complète des produits
+  List<Product> filteredProducts = []; // Liste filtrée des produits
+  String searchQuery = ''; // La requête de recherche
 
   // Fonction pour ajouter un produit au panier
   void _addToCart(Product product) {
@@ -34,35 +42,33 @@ class _EaPageState extends State<EaPage> {
       totalItemsInCart++; // Augmenter le nombre d'articles
     });
 
-    // Envoyer une notification locale
-    // NotificationService.showNotification(
-    //   title: "Produit ajouté",
-    //   body: "${product.name} a été ajouté au panier.",
-    // );
     // Afficher une notification Snackbar lorsque le produit est ajouté
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text("${product.name} a été ajouté au panier avec succès."),
-      duration: Duration(seconds: 2), // Durée d'affichage de la notification
-      action: SnackBarAction(
-        label: 'Voir le panier',
-        onPressed: () {
-          // Naviguer vers la page du panier
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => PanierPage(
-                panier: panier,
-                onPanierUpdate: _updateCart,
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Color(0xFFB0006B), // Couleur d'arrière-plan rose foncé
+        // Couleur d'arrière-plan rose
+        content: Text("${product.name} a été ajouté au panier avec succès."),
+        duration: Duration(seconds: 2), // Durée d'affichage de la notification
+        action: SnackBarAction(
+          label: 'Voir le panier',
+          onPressed: () {
+            // Naviguer vers la page du panier
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PanierPage(
+                  panier: panier,
+                  onPanierUpdate: _updateCart,
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
-    ),
-  );
-}
- // Fonction pour mettre à jour le panier
+    );
+  }
+
+  // Fonction pour mettre à jour le panier
   void _updateCart(List<Product> updatedCart) {
     setState(() {
       panier = updatedCart;
@@ -71,6 +77,134 @@ class _EaPageState extends State<EaPage> {
     });
   }
 
+//
+  @override
+  void initState() {
+    super.initState();
+    products = [
+      Product(
+        name: 'Amazon',
+        imagePath: 'assets/amazon.png',
+        description: 'Un produit Amazon de haute qualité',
+        price: 99.99,
+        category: 'femme',
+      ),
+      Product(
+        name: 'Voiture',
+        imagePath: 'assets/toyota.jpeg',
+        description: 'Une superbe voiture Toyota',
+        price: 19999.99,
+        category: 'femme',
+      ),
+      Product(
+        name: 'Enfant',
+        imagePath: 'assets/enfant.jpeg',
+        description: 'Faite plasir a vos enfants',
+        price: 99.99,
+        category: 'homme',
+      ),
+
+      Product(
+        name: 'Soins de corps',
+        imagePath: 'assets/soinscorps.jpeg',
+        description: 'Pour un teint lumineux',
+        price: 19999.99,
+        category: 'femme',
+      ),
+
+      Product(
+        name: 'Television',
+        imagePath: 'assets/tele.jpeg',
+        description: 'Des smart TV de derniere generation',
+        price: 12.99,
+        category: 'homme',
+      ),
+
+      Product(
+        name: 'Protection solaire',
+        imagePath: 'assets/solaire.jpeg',
+        description: 'Des cremes solaire pour mieux respecter votre peau',
+        price: 18.99,
+        category: 'homme',
+      ),
+
+      Product(
+        name: 'Soins du visage',
+        imagePath: 'assets/soinsvisage.jpeg',
+        description: 'Un beau visage sans tache',
+        price: 126.99,
+        category: 'femme',
+      ),
+
+      Product(
+        name: 'Telephone',
+        imagePath: 'assets/markpho.jpeg',
+        description: 'Des iphone de dernière génération',
+        price: 188.99,
+        category: 'homme',
+      ),
+
+      Product(
+        name: 'Maquillage',
+        imagePath: 'assets/maqui.jpeg',
+        description: 'Des maquillage pour être plus belle',
+        price: 19999.99,
+        category: 'femme',
+      ),
+
+      Product(
+        name: 'Cheveux',
+        imagePath: 'assets/markchev.png',
+        description: 'Rendez vos cheveux plus lisses',
+        price: 19999.99,
+        category: 'homme',
+      ),
+
+      Product(
+        name: 'Parfum',
+        imagePath: 'assets/markpar.jpg',
+        description: 'Parfum de luxe pour sentir bon tout le temps',
+        price: 79.99,
+        category: 'femme',
+      ),
+
+      // Ajouter tous vos produits ici
+    ];
+
+    filteredProducts = products; // Initialiser avec tous les produits
+  }
+
+  // Fonction de recherche
+  void _filterProducts(String query) {
+    setState(() {
+      searchQuery = query;
+      if (query.isEmpty) {
+        filteredProducts = products;
+      } else {
+        filteredProducts = products
+            .where((product) =>
+                product.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+      }
+    });
+  }
+
+//
+  String selectedCategory = 'toutes';
+
+  void _filterByCategory(String category) {
+    setState(() {
+      selectedCategory = category;
+      if (category == 'toutes') {
+        filteredProducts = products;
+      } else {
+        filteredProducts =
+            products.where((product) => product.category == category).toList();
+      }
+    });
+  }
+
+//
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,9 +221,9 @@ class _EaPageState extends State<EaPage> {
             Expanded(
               child: Center(
                 child: Image.asset(
-                  'assets/fat.jpg',
-                  height: 40,
-                  width: 200,
+                  'assets/log.jpg',
+                  height: 100,
+                  width: 250,
                 ),
               ),
             ),
@@ -107,6 +241,7 @@ class _EaPageState extends State<EaPage> {
                     );
                   },
                 ),
+
                 //
 // Afficher le badge avec le nombre d'articles
                 if (totalItemsInCart >
@@ -139,7 +274,14 @@ class _EaPageState extends State<EaPage> {
             //
             IconButton(
               icon: Icon(Icons.home),
-              onPressed: () {},
+              onPressed: () {
+                // Naviguer vers la page d'historique des commandes
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HistoriqueCommandesPage()),
+                );
+              },
             ),
           ],
         ),
@@ -158,9 +300,65 @@ class _EaPageState extends State<EaPage> {
                   border: OutlineInputBorder(),
                   prefixIcon: Icon(Icons.search),
                 ),
+                onChanged: _filterProducts, // Appel de la fonction de recherche
               ),
             ),
-            SizedBox(height: 20),
+            // Ajout d'un espace vertical avec SizedBox
+            SizedBox(height: 20), // Espace de 20 pixels
+            //
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _filterByCategory('toutes'),
+                    child: Text('Toutes'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: selectedCategory == 'toutes'
+                          ? Colors.pinkAccent
+                          : Color(0xFFFFC0CB),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => _filterByCategory('homme'),
+                    child: Text('Pour Homme'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: selectedCategory == 'homme'
+                          ? Colors.pinkAccent
+                          : Color(0xFFFFC0CB),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => _filterByCategory('femme'),
+                    child: Text('Pour Femme'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: selectedCategory == 'femme'
+                          ? Colors.pinkAccent
+                          : Color(0xFFFFC0CB),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            //
+            SizedBox(height: 20), // Espace de 20 pixels
+            // Ajouter un titre juste après la barre de recherche
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Center(
+                child: Text(
+                  'Vos categories', // Titre après la barre de recherche
+                  style: TextStyle(
+                    fontSize: 20, // Taille du texte
+                    fontWeight: FontWeight.bold, // Mettre en gras
+                    color: Colors.black, // Couleur du texte
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20), // Espace de 20 pixels
+
             // Section des produits
             _buildProductGrid(context),
           ],
@@ -174,66 +372,13 @@ class _EaPageState extends State<EaPage> {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: GridView.count(
         shrinkWrap: true,
-        crossAxisCount: 3,
+        crossAxisCount: 4,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         physics: NeverScrollableScrollPhysics(),
-        children: [
-          _buildProductItem(
-            context,
-            Product(
-              name: 'Amazon',
-              imagePath: 'assets/amazon.png',
-              description: 'Un produit Amazon de haute qualité',
-              price: 99.99,
-            ),
-          ),
-          _buildProductItem(
-            context,
-            Product(
-              name: 'Voiture',
-              imagePath: 'assets/toyota.jpeg',
-              description: 'Une superbe voiture Toyota',
-              price: 19999.99,
-            ),
-          ),
-          _buildProductItem(
-            context,
-            Product(
-              name: 'Telephone',
-              imagePath: 'assets/markpho.jpeg',
-              description: 'Des iphone de dernière génération',
-              price: 19999.99,
-            ),
-          ),
-          _buildProductItem(
-            context,
-            Product(
-              name: 'Maquillage',
-              imagePath: 'assets/maqui.jpeg',
-              description: 'Des maquillage pour être plus belle',
-              price: 19999.99,
-            ),
-          ),
-          _buildProductItem(
-            context,
-            Product(
-              name: 'Cheveux',
-              imagePath: 'assets/markchev.png',
-              description: 'Rendez vos cheveux plus lisses',
-              price: 19999.99,
-            ),
-          ),
-          _buildProductItem(
-            context,
-            Product(
-              name: 'Parfum',
-              imagePath: 'assets/markpar.jpg',
-              description: 'Parfum de luxe pour sentir bon tout le temps',
-              price: 79.99,
-            ),
-          ),
-        ],
+        children: filteredProducts
+            .map((product) => _buildProductItem(context, product))
+            .toList(),
       ),
     );
   }
@@ -392,6 +537,11 @@ class _PanierPageState extends State<PanierPage> {
                       SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
+                          // Ajouter la commande validée à l'historique
+                          widget.onPanierUpdate(
+                              widget.panier); // Mise à jour du panier
+                          Navigator.of(context).pop(); // Retour au panier
+
                           // Redirection vers la page de validation de commande
                           Navigator.push(
                             context,
@@ -402,19 +552,23 @@ class _PanierPageState extends State<PanierPage> {
                               ),
                             ),
                           );
-                          
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("Commande validée avec succès."),
-        duration: Duration(seconds: 2),
-      ),
-    );
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: Color(
+                                  0xFFB0006B), // Couleur d'arrière-plan rose foncé
+                              content: Text("Commande validée avec succès."),
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
                         },
                         child: Text('Valider la commande'),
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 50),
-                          backgroundColor: Colors.green,
+                          backgroundColor: Color(
+                              0xFFB0006B), // Couleur d'arrière-plan rose foncé
+
                           textStyle: TextStyle(fontSize: 18),
                         ),
                       ),
@@ -484,3 +638,4 @@ class ProductDetailsPage extends StatelessWidget {
     );
   }
 }
+//

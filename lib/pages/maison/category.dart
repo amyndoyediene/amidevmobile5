@@ -1,4 +1,3 @@
-import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:flutter/material.dart';
 
 class OffersPage extends StatelessWidget {
@@ -15,10 +14,10 @@ class OffersPage extends StatelessWidget {
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               // Action pour le panier
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PanierePage()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => PanierePage()),
+              // );
             },
           ),
         ],

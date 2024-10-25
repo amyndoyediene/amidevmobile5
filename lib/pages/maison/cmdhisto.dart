@@ -1,82 +1,108 @@
 import 'package:flutter/material.dart';
-import 'order_model.dart'; // Assurez-vous d'importer votre modèle de commande
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
-class OrderHistoryPage extends StatelessWidget {
-  // Exemple de données statiques (normalement, cela viendrait de votre base de données)
-  final List<OrderModel> orders = [
-    OrderModel(
-      id: '1',
-      productName: 'Produit 1',
-      price: 25.99,
-      status: 'En traitement',
-      orderDate: DateTime.now().subtract(Duration(days: 1)),
-    ),
-    OrderModel(
-      id: '2',
-      productName: 'Produit 2',
-      price: 45.50,
-      status: 'Livré',
-      orderDate: DateTime.now().subtract(Duration(days: 5)),
-    ),
-    OrderModel(
-      id: '3',
-      productName: 'Produit 3',
-      price: 19.99,
-      status: 'Livré',
-      orderDate: DateTime.now().subtract(Duration(days: 10)),
-    ),
-  ];
+class HistoriqueCommandesPage extends StatefulWidget {
+  @override
+  _HistoriqueCommandesPageState createState() =>
+      _HistoriqueCommandesPageState();
+}
+
+class _HistoriqueCommandesPageState extends State<HistoriqueCommandesPage> {
+  List<Map<String, dynamic>> _historiqueCommandes = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _chargerHistoriqueCommandes();
+  }
+
+  // Exemple de code pour sauvegarder une commande dans SharedPreferences
+  Future<void> _sauvegarderCommande(Map<String, dynamic> commande) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> commandes = prefs.getStringList('historiqueCommandes') ?? [];
+    commandes.add(jsonEncode(commande));
+    await prefs.setStringList('historiqueCommandes', commandes);
+  }
+
+  // Charger l'historique des commandes depuis SharedPreferences
+  Future<void> _chargerHistoriqueCommandes() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> commandes = prefs.getStringList('historiqueCommandes') ?? [];
+    setState(() {
+      _historiqueCommandes =
+          commandes.map((e) => jsonDecode(e) as Map<String, dynamic>).toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Historique des commandes'),
-        backgroundColor: Colors.pink,
+        backgroundColor: Color(0xFFFFC0CB),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: orders.length,
-          itemBuilder: (context, index) {
-            final order = orders[index];
-            return Card(
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: ListTile(
-                title: Text(order.productName),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Prix: \$${order.price.toStringAsFixed(2)}'),
-                    Text('Date de commande: ${order.orderDate.toLocal()}'),
-                    Text('Statut: ${order.status}',
-                        style: TextStyle(
-                          color: _getStatusColor(order.status),
-                          fontWeight: FontWeight.bold,
-                        )),
-                  ],
-                ),
-                trailing: Icon(Icons.arrow_forward),
-                onTap: () {
-                  // Ajoutez une action si vous souhaitez montrer plus de détails
-                },
-              ),
-            );
-          },
-        ),
-      ),
+      body: _historiqueCommandes.isEmpty
+          ? Center(child: Text('Aucune commande passée.'))
+          : ListView.builder(
+              itemCount: _historiqueCommandes.length,
+              itemBuilder: (context, index) {
+                final commande = _historiqueCommandes[index];
+                return Card(
+                  margin: EdgeInsets.all(8.0),
+                  child: ListTile(
+                    title: Text('Commande du ${commande['date']}'),
+                    subtitle: Text(
+                        'Total: \$${commande['total']} - ${commande['modePaiement']}'),
+                    onTap: () {
+                      _afficherDetailsCommande(commande);
+                    },
+                  ),
+                );
+              },
+            ),
     );
   }
 
-  // Une fonction pour changer la couleur du texte en fonction du statut de la commande
-  Color _getStatusColor(String status) {
-    switch (status) {
-      case 'En traitement':
-        return Colors.orange;
-      case 'Livré':
-        return Colors.green;
-      default:
-        return Colors.grey;
-    }
+  // Fonction pour afficher les détails de la commande avec les produits
+  void _afficherDetailsCommande(Map<String, dynamic> commande) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Détails de la commande'),
+          content: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Nom: ${commande['nom']}'),
+                  Text('Adresse: ${commande['adresse']}'),
+                  Text('Mode de paiement: ${commande['modePaiement']}'),
+                  Text('Total: \$${commande['total']}'),
+                  SizedBox(height: 10),
+                  Text('Produits:'),
+                  ...List<Widget>.from(
+                    commande['panier'].map((p) => Text(
+                          '${p['name']} x${p['quantity']} - \$${(p['price'] * p['quantity']).toStringAsFixed(2)}',
+                        )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Fermer'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -1,10 +1,13 @@
 import 'package:amimobile5/pages/maison/marque.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 // Page de validation de commande
 class ValidationCommandePage extends StatefulWidget {
   final List<Product> panier;
   final double total;
+  
 
   ValidationCommandePage({required this.panier, required this.total});
 
@@ -18,6 +21,58 @@ class _ValidationCommandePageState extends State<ValidationCommandePage> {
   String? _nom;
   String? _adresse;
   String _modePaiement = 'Paiement en ligne';
+
+  // Méthode pour sauvegarder une commande
+  Future<void> _sauvegarderCommande() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Créer un objet commande
+    final commande = {
+      'nom': _nom,
+      'adresse': _adresse,
+      'modePaiement': _modePaiement,
+      'total': widget.total,
+      'panier': widget.panier.map((p) => {
+        'name': p.name,
+        'quantity': p.quantity,
+        'price': p.price,
+      }).toList(),
+      'date': DateTime.now().toIso8601String(),
+    };
+
+    // Récupérer l'historique des commandes
+    List<String> commandes = prefs.getStringList('historiqueCommandes') ?? [];
+    commandes.add(jsonEncode(commande));
+
+    // Sauvegarder la liste mise à jour
+    await prefs.setStringList('historiqueCommandes', commandes);
+  }
+
+  // Modifiez la fonction de confirmation pour inclure l'enregistrement
+  void _confirmerCommande() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      _sauvegarderCommande(); // Sauvegarder la commande
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Commande confirmée'),
+          content: Text('Merci, $_nom. Votre commande est en cours de traitement.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Retour au panier
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {

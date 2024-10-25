@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "324340540675",
+    "project_id": "amiecom-6fe26",
+    "storage_bucket": "amiecom-6fe26.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324340540675:android:24d6871537fc1f7d957536",
+        "android_client_info": {
+          "package_name": "com.example.amimobile5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCI2AYJGzjnyL0fSHYfhsDHhiUbBydiC6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

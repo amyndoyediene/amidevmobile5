@@ -1,15 +1,15 @@
-class OrderModel {
-  final String id;
-  final String productName;
-  final double price;
-  final String status; // En traitement, Livré, etc.
-  final DateTime orderDate;
+// import 'package:amimobile5/pages/maison/marque.dart';
 
-  OrderModel({
-    required this.id,
-    required this.productName,
-    required this.price,
-    required this.status,
-    required this.orderDate,
-  });
-}
+// class Order {
+//   final String id;
+//   final List<Product> productList;
+//   final double totalPrice;
+//   String status; // En traitement, Livré, etc.
+
+//   Order({
+//     required this.id,
+//     required this.productList,
+//     required this.totalPrice,
+//     this.status = "En traitement", // Statut initial
+//   });
+// }

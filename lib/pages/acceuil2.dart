@@ -2,8 +2,6 @@ import 'package:amimobile5/pages/hoome.dart';
 import 'package:amimobile5/pages/maison/category.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
 import 'package:amimobile5/pages/maison/marque.dart';
-import 'package:amimobile5/pages/maison/marque.dart';
-import 'package:amimobile5/pages/maison/panier.dart';
 import 'package:flutter/material.dart';
 
 class EcommercePage extends StatefulWidget {
@@ -14,34 +12,51 @@ class EcommercePage extends StatefulWidget {
 }
 
 class _EcommercePageState extends State<EcommercePage> {
-  List<Product> panier = []; // Définir la variable panier
-  int totalItemsInCart = 0; // Pour suivre le nombre d'articles
+  List<Product> panier = [];
+  int totalItemsInCart = 0;
 
-  // Fonction pour mettre à jour le panier
   void _updateCart(List<Product> updatedCart) {
     setState(() {
       panier = updatedCart;
-      totalItemsInCart = panier.fold(
-          0,
-          (sum, item) =>
-              sum + item.quantity); // Mettre à jour le nombre d'articles
+      totalItemsInCart = panier.fold(0, (sum, item) => sum + item.quantity);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
-        title: const Text('Accueil'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'Bienvenue sur notre plateforme e-commerce Amsashop, appelez au 70 656 76 54 pour commander',
-          style: TextStyle(fontSize: 20.0),
-        ),
+      body: Stack(
+        children: <Widget>[
+          // Image de fond
+          Positioned.fill(
+            child: Image.asset(
+              'assets/amsa.jpg', // Assurez-vous que cette image est bien dans le dossier assets
+              fit: BoxFit.cover, // Pour couvrir toute la page
+            ),
+          ),
+          // Contenu de la page
+          Column(
+            children: <Widget>[
+              AppBar(
+                backgroundColor:
+                    Colors.transparent, // Pour laisser voir l'image derrière
+                title: const Text('Accueil'),
+                centerTitle: true,
+              ),
+              const Center(
+                child: Text(
+                  'Bienvenue sur notre plateforme e-commerce Amsashop, appelez au 70 656 76 54 pour commander',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors
+                        .white, // Assurez-vous que le texte est visible sur l'image
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       bottomNavigationBar: SafeArea(
         child: BottomAppBar(
