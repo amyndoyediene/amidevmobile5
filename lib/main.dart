@@ -1,7 +1,11 @@
+import 'package:amimobile5/basedonne/login.dart';
+import 'package:amimobile5/basedonne/signup.dart';
 import 'package:amimobile5/pages/acceuil1.dart';
 import 'package:amimobile5/pages/acceuil2.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
 import 'package:flutter/material.dart';
+
+
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:amimobile5/pages/maison/notifications_service.dart';
 
@@ -40,6 +44,8 @@ class MyApp extends StatelessWidget {
         '/acceuil2': (context) => EcommercePage(),
         // '/search': (context) => SearchPage(),
         '/account': (context) => ComptePage(),
+        '/login': (context) => LoginScreen(),
+        '/register': (context) => SignUp(),
       },
     );
   }

@@ -1,5 +1,4 @@
 //import 'package:amimobile5/pages/maison/cmdhisto.dart';
-import 'package:amimobile5/pages/maison/cmdhisto.dart';
 import 'package:amimobile5/pages/maison/cmdvalide.dart';
 //import 'package:amimobile5/pages/maison/order_model.dart';
 import 'package:flutter/material.dart';
@@ -276,11 +275,11 @@ class _EaPageState extends State<EaPage> {
               icon: Icon(Icons.home),
               onPressed: () {
                 // Naviguer vers la page d'historique des commandes
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => HistoriqueCommandesPage()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //       builder: (context) => HistoriqueCommandesPage()),
+                // );
               },
             ),
           ],

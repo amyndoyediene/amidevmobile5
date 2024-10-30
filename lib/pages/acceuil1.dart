@@ -1,7 +1,8 @@
 import 'package:amimobile5/admin_ins.dart';
 import 'package:amimobile5/pages/acceuil2.dart';
-import 'package:amimobile5/pages/maison/cmdhisto.dart';
-import 'package:amimobile5/pages/maison/marque.dart';
+import 'package:amimobile5/pages/acceuil3.dart';
+import 'package:amimobile5/pages/maison/home.dart';
+import 'package:amimobile5/pages/maison/categoriee.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,10 +39,11 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.keyboard_command_key),
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => OrderHistoryPage()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HoomePage
+                ()),
+              );
             },
           ),
         ],

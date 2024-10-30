@@ -1,7 +1,8 @@
-import 'package:amimobile5/pages/hoome.dart';
-import 'package:amimobile5/pages/maison/category.dart';
+import 'package:amimobile5/pages/acceuil3.dart';
+import 'package:amimobile5/pages/maison/promo.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
-import 'package:amimobile5/pages/maison/marque.dart';
+import 'package:amimobile5/pages/maison/home.dart';
+import 'package:amimobile5/pages/maison/categoriee.dart';
 import 'package:flutter/material.dart';
 
 class EcommercePage extends StatefulWidget {
@@ -72,24 +73,24 @@ class _EcommercePageState extends State<EcommercePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HoomePage()),
-                    );
-                  },
-                ),
-                _buildBottomNavButton(
-                  icon: Icons.search,
-                  label: 'Rechercher',
-                  iconColor: Colors.pink,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
                       MaterialPageRoute(builder: (context) => EaPage()),
                     );
                   },
                 ),
                 _buildBottomNavButton(
                   icon: Icons.category,
-                  label: 'Categorie',
+                  label: 'Categori',
+                  iconColor: Colors.pink,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CaPage()),
+                    );
+                  },
+                ),
+                _buildBottomNavButton(
+                  icon: Icons.category_sharp,
+                  label: 'En promo!',
                   onPressed: () {
                     Navigator.push(
                       context,

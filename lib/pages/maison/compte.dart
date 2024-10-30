@@ -1,5 +1,7 @@
-import 'package:amimobile5/pages/maison/compte_creat.dart';
-import 'package:amimobile5/pages/maison/compte_id.dart';
+import 'package:amimobile5/basedonne/login.dart';
+import 'package:amimobile5/basedonne/signup.dart';
+//import 'package:amimobile5/pages/maison/compte_creat.dart';
+//import 'package:amimobile5/pages/maison/compte_id.dart';
 import 'package:flutter/material.dart';
 // import 'package:amimobile5/pages/maison/aide_connexion.dart';
 // import 'package:amimobile5/pages/maison/politique_securite.dart';
@@ -39,7 +41,7 @@ class ComptePage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => InscriptionPage()),
+                          builder: (context) => LoginScreen()),
                           //builder: (context) => LoginPage()),
                     );
                   },
@@ -55,7 +57,7 @@ class ComptePage extends StatelessWidget {
                     // Logique pour le deuxième bouton
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => creerPage()),
+                      MaterialPageRoute(builder: (context) => const SignUp()),
                       //MaterialPageRoute(builder: (context) => RegisterPage()),
                     );
                   },

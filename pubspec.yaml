@@ -35,6 +35,12 @@ dependencies:
   firebase_auth: 5.3.1
   flutter_local_notifications: ^16.0.0 
   shared_preferences: ^2.0.0
+  sqflite: ^2.0.0+4
+  path: ^1.8.0
+  encrypt: ^5.0.0 # Pour chiffrer les mots de passe
+  sqflite_common_ffi: ^2.0.0
+  intl: ^0.17.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -89,6 +95,11 @@ flutter:
    - assets/solaire.jpeg
    - assets/amsa.jpg
    - assets/log.jpg
+   - assets/laver.jpeg
+   - assets/frigo.jpg
+   - assets/cui.jpeg
+   - assets/tv.jpeg
+   - assets/ordi.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
