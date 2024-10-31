@@ -70,8 +70,6 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/inscri.png
-   - assets/amm.jpeg
    - assets/products.json
    - assets/cheveux.jpeg
    - assets/parfum.jpeg
@@ -97,6 +95,21 @@ flutter:
    - assets/robe.png
    - assets/pantalon.png
    - assets/chemise.png
+   - assets/porte.png
+   - assets/fene.png
+   - assets/tab.png
+   - assets/fauteuil.png
+   - assets/cra.png
+   - assets/blocn.png
+   - assets/cahi.png
+   - assets/jeu.jpg
+   - assets/sac1.png
+   - assets/chau.png
+   
+
+   
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
