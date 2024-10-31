@@ -13,8 +13,6 @@ class DatabaseHelper {
   String users =
       "create table users (usrId INTEGER PRIMARY KEY AUTOINCREMENT, usrName TEXT UNIQUE, usrPassword TEXT)";
 
-  static var instance;
-
   //We are done in this section
 
   Future<Database> initDB() async {

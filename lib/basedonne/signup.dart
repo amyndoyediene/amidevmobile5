@@ -1,4 +1,3 @@
-import 'package:amimobile5/basedonne/login.dart';
 import 'package:flutter/material.dart';
 import 'package:amimobile5/basedonne/login.dart';
 import 'package:amimobile5/basedonne/users.dart';
@@ -19,15 +18,6 @@ class _SignUpState extends State<SignUp> {
   final formKey = GlobalKey<FormState>();
 
   bool isVisible = false;
-  registerUser() async {
-    if (formKey.currentState!.validate()) {
-      await DatabaseHelper.instance.register(
-        Users(usrName: username.text, usrPassword: password.text),
-      );
-      Navigator.pop(
-          context); // Retour à l'écran de connexion après l'inscription
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

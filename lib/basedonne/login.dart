@@ -1,5 +1,3 @@
-import 'package:amimobile5/basedonne/create_note.dart';
-import 'package:amimobile5/basedonne/notes.dart';
 import 'package:flutter/material.dart';
 import 'package:amimobile5/basedonne/signup.dart';
 import 'package:amimobile5/basedonne/users.dart';
@@ -21,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final password = TextEditingController();
 
   //A bool variable for show and hide password
-  bool isVisible = true;
+  bool isVisible = false;
 
   //Here is our bool variable
   bool isLoginTrue = false;
@@ -29,31 +27,16 @@ class _LoginScreenState extends State<LoginScreen> {
   final db = DatabaseHelper();
 
   //Now we should call this function in login button
-  // login() async {
-  //   var response = await db
-  //       .login(Users(usrName: username.text, usrPassword: password.text));
-  //   if (response == true) {
-  //     //If login is correct, then goto notes
-  //     if (!mounted) return;
-  //     Navigator.pushReplacement(context,
-  //         MaterialPageRoute(builder: (context) => const Notes()));
-  //   } else {
-  //     //If not, true the bool value to show error message
-  //     setState(() {
-  //       isLoginTrue = true;
-  //     });
-  //   }
-  // }
   login() async {
-    var response = await DatabaseHelper.instance
+    var response = await db
         .login(Users(usrName: username.text, usrPassword: password.text));
-    if (response) {
-      // Si la connexion est réussie, naviguez vers l'écran des notes
+    if (response == true) {
+      //If login is correct, then goto notes
       if (!mounted) return;
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const CreateNote()));
+          context, MaterialPageRoute(builder: (context) => const Notes()));
     } else {
-      // Si la connexion échoue, affichez un message d'erreur
+      //If not, true the bool value to show error message
       setState(() {
         isLoginTrue = true;
       });
@@ -78,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   //Before we show the image, after we copied the image we need to define the location in pubspec.yaml
                   Image.asset(
-                    "assets/markchev.png",
+                    "lib/assets/login.png",
                     width: 210,
                   ),
                   const SizedBox(height: 15),
