@@ -27,21 +27,35 @@ class _LoginScreenState extends State<LoginScreen> {
   final db = DatabaseHelper();
 
   //Now we should call this function in login button
-  login() async {
-    var response = await db
-        .login(Users(usrName: username.text, usrPassword: password.text));
-    if (response == true) {
-      //If login is correct, then goto notes
-      if (!mounted) return;
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const Notes()));
-    } else {
-      //If not, true the bool value to show error message
-      setState(() {
-        isLoginTrue = true;
-      });
-    }
+  // login() async {
+  //   var response = await db
+  //       .login(Users(usrName: username.text, usrPassword: password.text));
+  //   if (response == true) {
+  //     //If login is correct, then goto notes
+  //     if (!mounted) return;
+  //     Navigator.pushReplacement(
+  //         context, MaterialPageRoute(builder: (context) => const Notes()));
+  //   } else {
+  //     //If not, true the bool value to show error message
+  //     setState(() {
+  //       isLoginTrue = true;
+  //     });
+  //   }
+  // }
+login() async {
+  var response = await db
+      .login(Users(usrName: username.text, usrPassword: password.text));
+  print("Login response: $response"); // Pour voir ce que renvoie la fonction login()
+  if (response == true) {
+    if (!mounted) return;
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => const Notes()));
+  } else {
+    setState(() {
+      isLoginTrue = true; // Active le message d'erreur si les informations sont incorrectes
+    });
   }
+}
 
   //We have to create global key for our form
   final formKey = GlobalKey<FormState>();
@@ -61,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   //Before we show the image, after we copied the image we need to define the location in pubspec.yaml
                   Image.asset(
-                    "lib/assets/login.png",
+                    "assets/log.jpg",
                     width: 210,
                   ),
                   const SizedBox(height: 15),
@@ -71,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple.withOpacity(.2)),
+                        color: Colors.pink.withOpacity(.2)),
                     child: TextFormField(
                       controller: username,
                       validator: (value) {
@@ -95,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple.withOpacity(.2)),
+                        color: Colors.pink.withOpacity(.2)),
                     child: TextFormField(
                       controller: password,
                       validator: (value) {
@@ -130,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: MediaQuery.of(context).size.width * .9,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Colors.deepPurple),
+                        color: Colors.pink),
                     child: TextButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {

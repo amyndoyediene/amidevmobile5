@@ -82,9 +82,9 @@ class _EaPageState extends State<EaPage> {
     super.initState();
     products = [
       Product(
-        name: 'Amazon',
-        imagePath: 'assets/amazon.png',
-        description: 'Un produit Amazon de haute qualité',
+        name: 'Sacs',
+        imagePath: 'assets/sac.png',
+        description: 'Des sacs de haute qualité',
         price: 99.99,
         category: 'femme',
       ),
@@ -96,8 +96,8 @@ class _EaPageState extends State<EaPage> {
         category: 'femme',
       ),
       Product(
-        name: 'Enfant',
-        imagePath: 'assets/enfant.jpeg',
+        name: 'Robe',
+        imagePath: 'assets/robe.png',
         description: 'Faite plasir a vos enfants',
         price: 99.99,
         category: 'homme',

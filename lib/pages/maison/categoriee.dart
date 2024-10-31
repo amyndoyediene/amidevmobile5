@@ -1,4 +1,10 @@
-import 'package:amimobile5/pages/maison/compte_id.dart';
+
+import 'package:amimobile5/produitdetail/cremesol.dart';
+import 'package:amimobile5/produitdetail/cuisi.dart';
+import 'package:amimobile5/produitdetail/frigo.dart';
+import 'package:amimobile5/produitdetail/maqui.dart';
+import 'package:amimobile5/produitdetail/ordi.dart';
+import 'package:amimobile5/produitdetail/tv.dart';
 import 'package:flutter/material.dart';
 
 class CaPage extends StatefulWidget {
@@ -12,30 +18,30 @@ class _CaPageState extends State<CaPage> {
     {
       'title': 'Crème solaire',
       'image': 'assets/solaire.jpeg',
-      'page': InscriptionPage()
+      'page': CresoPage()
     },
     {
       'title': 'Maquillage',
       'image': 'assets/maqui.jpeg',
-      'page': ValidationCommandePage()
+      'page': MAPage()
     },
-    {'title': 'Smart TV', 'image': 'assets/tv.jpeg', 'page': SomeOtherPage()},
+    {'title': 'Smart TV', 'image': 'assets/tv.jpeg', 'page': TVPage()},
     {
       'title': 'Ordinateur',
       'image': 'assets/ordi.jpeg',
-      'page': SomeOtherPage()
+      'page': ORPage()
     },
     {
       'title': 'Réfrigérateur',
       'image': 'assets/frigo.jpg',
-      'page': SomeOtherPage()
+      'page': FriPage()
     },
     {
       'title': 'Machine à laver',
       'image': 'assets/laver.jpeg',
-      'page': SomeOtherPage()
+      'page': MAPage()
     },
-    {'title': 'Cuisine', 'image': 'assets/cui.jpeg', 'page': SomeOtherPage()},
+    {'title': 'Cuisine', 'image': 'assets/cui.jpeg', 'page': CuiPage()},
   ];
 
   // Liste filtrée des catégories

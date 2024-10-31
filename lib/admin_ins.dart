@@ -1,6 +1,5 @@
 import 'package:amimobile5/admin_wel.dart';
 import 'package:flutter/material.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,14 +22,35 @@ class InscriadminPage extends StatefulWidget {
 
 class _InscriptionPageState extends State<InscriadminPage> {
   final _formKey = GlobalKey<FormState>();
-  String? _name, _email, _password, _confirmPassword;
+  String? _name, _password;
+
+  // Fonction de validation de connexion
+  void _validateAndLogin() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      if (_name == "amidiene" && _password == "1234") {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AdminwelPage()),
+        );
+      } else {
+        // Affichage d'un message d'erreur si les identifiants sont incorrects
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Nom d'utilisateur ou mot de passe incorrect"),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
       appBar: AppBar(
-        title: Text('Page de connexion adminstrateur', style: TextStyle(color: Colors.white)),
+        title: Text('Page de connexion administrateur', style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFFFFC0CB), // Couleur d'arrière-plan rose
         elevation: 0,
       ),
@@ -79,8 +99,8 @@ class _InscriptionPageState extends State<InscriadminPage> {
                   ),
                 ),
                 validator: (value) {
-                  if (value == null || value.length < 6) {
-                    return 'Le mot de passe doit contenir au moins 6 caractères';
+                  if (value == null || value.isEmpty) {
+                    return 'Veuillez entrer votre mot de passe';
                   }
                   return null;
                 },
@@ -90,12 +110,7 @@ class _InscriptionPageState extends State<InscriadminPage> {
 
               // Bouton Se connecter
               TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AdminwelPage()),
-                  );
-                },
+                onPressed: _validateAndLogin,
                 child: Text(
                   'Se connecter',
                   style: TextStyle(color: Colors.white, fontSize: 16),
