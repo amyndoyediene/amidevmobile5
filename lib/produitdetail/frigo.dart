@@ -404,7 +404,7 @@ List<Product> products = [
   Product(
     name: "ROCHE-POSE Lait pour tout le Corps",
     price: "4900 CFA",
-    imageUrl: "assets/frigo.jpeg",
+    imageUrl: "assets/frigo.jpg",
     isNew: true,
   ),
   Product(

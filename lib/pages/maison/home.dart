@@ -104,8 +104,8 @@ class _EaPageState extends State<EaPage> {
       ),
 
       Product(
-        name: 'Soins de corps',
-        imagePath: 'assets/soinscorps.jpeg',
+        name: 'Tablettes',
+        imagePath: 'assets/tabb.png',
         description: 'Pour un teint lumineux',
         price: 19999.99,
         category: 'femme',
@@ -128,8 +128,8 @@ class _EaPageState extends State<EaPage> {
       ),
 
       Product(
-        name: 'Soins du visage',
-        imagePath: 'assets/soinsvisage.jpeg',
+        name: 'Montre',
+        imagePath: 'assets/montre.png',
         description: 'Un beau visage sans tache',
         price: 126.99,
         category: 'femme',
@@ -152,8 +152,8 @@ class _EaPageState extends State<EaPage> {
       ),
 
       Product(
-        name: 'Cheveux',
-        imagePath: 'assets/markchev.png',
+        name: 'Ecouteur',
+        imagePath: 'assets/ecoute.png',
         description: 'Rendez vos cheveux plus lisses',
         price: 19999.99,
         category: 'homme',

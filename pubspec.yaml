@@ -78,9 +78,6 @@ flutter:
    - assets/maqui.jpeg
    - assets/markpar.jpg
    - assets/toyota.jpeg
-   - assets/soinscorps.jpeg
-   - assets/soinsvisage.jpeg
-   - assets/markchev.png
    - assets/markpho.jpeg
    - assets/tele.jpeg
    - assets/solaire.jpeg
@@ -104,7 +101,10 @@ flutter:
    - assets/cahi.png
    - assets/jeu.jpg
    - assets/sac1.png
+   - assets/montre.png
    - assets/chau.png
+   - assets/ecoute.png
+   - assets/tabb.png
    
 
    
