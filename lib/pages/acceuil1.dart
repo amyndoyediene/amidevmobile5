@@ -1,5 +1,6 @@
 import 'package:amimobile5/admin_ins.dart';
 import 'package:amimobile5/pages/acceuil2.dart';
+import 'package:amimobile5/pages/acceuil4.dart';
 import 'package:amimobile5/pages/maison/home.dart';
 import 'package:amimobile5/pages/maison/categoriee.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               // Navigator.push(
               //   context,
-              //   MaterialPageRoute(builder: (context) => HoomePage
+              //   MaterialPageRoute(builder: (context) => 
               //   ()),
               // );
             },
@@ -66,7 +67,7 @@ class HomePage extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   image: AssetImage(
-                      'assets/logoo.png'), // Assurez-vous que votre image est dans le dossier assets
+                      'assets/am.png'), // Assurez-vous que votre image est dans le dossier assets
                   fit: BoxFit.cover,
                 ),
               ),

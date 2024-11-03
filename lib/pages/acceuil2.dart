@@ -1,4 +1,5 @@
 import 'package:amimobile5/pages/acceuil3.dart';
+import 'package:amimobile5/pages/acceuil4.dart';
 import 'package:amimobile5/pages/maison/promo.dart';
 import 'package:amimobile5/pages/maison/compte.dart';
 import 'package:amimobile5/pages/maison/home.dart';
@@ -94,7 +95,7 @@ class _EcommercePageState extends State<EcommercePage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => OffersPage()),
+                      MaterialPageRoute(builder: (context) => HoPage()),
                     );
                   },
                 ),

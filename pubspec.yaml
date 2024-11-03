@@ -73,7 +73,6 @@ flutter:
    - assets/products.json
    - assets/cheveux.jpeg
    - assets/parfum.jpeg
-   - assets/shoppp.jpg
    - assets/logoo.png
    - assets/maqui.jpeg
    - assets/markpar.jpg
@@ -105,6 +104,14 @@ flutter:
    - assets/chau.png
    - assets/ecoute.png
    - assets/tabb.png
+   - assets/creso1.png
+   - assets/creso2.jpg
+   - assets/creso3.png
+   - assets/creso4.png
+   - assets/creso5.png
+   - assets/am.png
+   - assets/ams.png
+   
    
 
    
