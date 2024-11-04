@@ -382,64 +382,113 @@ class _EaPageState extends State<EaPage> {
     );
   }
 
+  // Widget _buildProductItem(BuildContext context, Product product) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) => ProductDetailsPage(
+  //             product: product,
+  //             onAddToCart: _addToCart,
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //     child: Container(
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(10),
+  //         boxShadow: [
+  //           BoxShadow(
+  //             color: Colors.black,
+  //             blurRadius: 4,
+  //             offset: Offset(2, 2),
+  //           ),
+  //         ],
+  //       ),
+  //       child: Stack(
+  //         children: [
+  //           ClipRRect(
+  //             borderRadius: BorderRadius.circular(10),
+  //             child: Image.asset(
+  //               product.imagePath,
+  //               height: double.infinity,
+  //               width: double.infinity,
+  //               fit: BoxFit.cover,
+  //             ),
+  //           ),
+  //           Positioned(
+  //             bottom: 0,
+  //             left: 0,
+  //             right: 0,
+  //             child: Container(
+  //               padding: EdgeInsets.all(8),
+  //               color: Colors.black54,
+  //               child: Text(
+  //                 product.name,
+  //                 style: TextStyle(
+  //                   color: Colors.white,
+  //                   fontSize: 16,
+  //                   fontWeight: FontWeight.bold,
+  //                 ),
+  //                 textAlign: TextAlign.center,
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
   Widget _buildProductItem(BuildContext context, Product product) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProductDetailsPage(
-              product: product,
-              onAddToCart: _addToCart,
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductDetailsPage(
+            product: product,
+            onAddToCart: _addToCart,
+          ),
+        ),
+      );
+    },
+    child: Column(
+      children: [
+        Container(
+          height: 120,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 4,
+                offset: Offset(2, 2),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.asset(
+              product.imagePath,
+              fit: BoxFit.cover,
             ),
           ),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              blurRadius: 4,
-              offset: Offset(2, 2),
-            ),
-          ],
         ),
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                product.imagePath,
-                height: double.infinity,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: EdgeInsets.all(8),
-                color: Colors.black54,
-                child: Text(
-                  product.name,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ],
+        SizedBox(height: 8), // Espacement entre l'image et le texte
+        Text(
+          product.name,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
         ),
-      ),
-    );
-  }
+      ],
+    ),
+  );
+}
+
 }
 
 // Page du panier

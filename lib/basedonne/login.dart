@@ -42,26 +42,37 @@ class _LoginScreenState extends State<LoginScreen> {
   //     });
   //   }
   // }
-login() async {
-  var response = await db
-      .login(Users(usrName: username.text, usrPassword: password.text));
-  print("Login response: $response"); // Pour voir ce que renvoie la fonction login()
-  if (response == true) {
-    if (!mounted) return;
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const Notes()));
-  } else {
-    setState(() {
-      isLoginTrue = true; // Active le message d'erreur si les informations sont incorrectes
-    });
+  login() async {
+    var response = await db
+        .login(Users(usrName: username.text, usrPassword: password.text));
+    print(
+        "Login response: $response"); // Pour voir ce que renvoie la fonction login()
+    if (response == true) {
+      if (!mounted) return;
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => const Notes()));
+    } else {
+      setState(() {
+        isLoginTrue =
+            true; // Active le message d'erreur si les informations sont incorrectes
+      });
+    }
   }
-}
 
   //We have to create global key for our form
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Sign Up"),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Retour à la page précédente
+          },
+        ),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(

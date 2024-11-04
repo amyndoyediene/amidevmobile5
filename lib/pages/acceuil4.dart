@@ -56,9 +56,13 @@ class _HoPageState extends State<HoPage> {
         backgroundColor: Color(0xFFFFC0CB), // Couleur de l'appBar
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.black),
-          onPressed: () {},
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Retour à la page précédente
+          },
+         
         ),
+        
         title: Center(
           child: Image.asset(
             'assets/ams.png', // Remplacez par le logo réel
@@ -104,7 +108,7 @@ class _HoPageState extends State<HoPage> {
             _buildCategorySection(),
             SizedBox(height: 100),
             Text(
-              'Livraison en moins de 24h sur Abidjan',
+              'Livraison en moins de 24h sur tout le senegal',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -127,20 +131,20 @@ class _HoPageState extends State<HoPage> {
     ];
     
     return Container(
-      height: 70,
+      height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.0), // Ajustez l'espacement ici
+            padding: EdgeInsets.symmetric(horizontal: 35.0), // Ajustez l'espacement ici
             child: Column(
               children: [
                 CircleAvatar(
-                  radius: 50,
+                  radius: 30,
                   backgroundImage: AssetImage(categories[index]["image"]!),
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: 15),
                 Text(
                   categories[index]["title"]!,
                   textAlign: TextAlign.center,
