@@ -131,38 +131,42 @@ class _HoPageState extends State<HoPage> {
     ];
     
     return Container(
-      height: 100,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 35.0), // Ajustez l'espacement ici
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage(categories[index]["image"]!),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  categories[index]["title"]!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 12),
-                ),
-              ],
+  height: 120, // Augmentez légèrement la hauteur
+  child: ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: categories.length,
+    itemBuilder: (context, index) {
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 25.0), // Ajustez l'espacement ici si nécessaire
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // Limite la taille de la colonne pour éviter l'overflow
+          children: [
+            CircleAvatar(
+              radius: 25, // Réduit légèrement la taille de l'avatar
+              backgroundImage: AssetImage(categories[index]["image"]!),
             ),
-          );
-        },
-      ),
-    );
+            SizedBox(height: 10), // Diminue l'espacement
+            Flexible(
+              child: Text(
+                categories[index]["title"]!,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 11), // Réduit la taille de la police
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  ),
+);
+
   }
 
   Widget _buildNewInStockSection() {
     List<Map<String, String>> products = [
-      {"title": "Produit 1", "image": "assets/fene.png"},
-      {"title": "Produit 2", "image": "assets/sac1.png"},
-      {"title": "Produit 3", "image": "assets/cahi.png"},
+      {"title": "Produit 1", "image": "assets/mark1.png"},
+      {"title": "Produit 2", "image": "assets/mark2.png"},
+      {"title": "Produit 3", "image": "assets/mark5.png"},
     ];
     
     return Padding(
@@ -192,6 +196,10 @@ class _HoPageState extends State<HoPage> {
                 SizedBox(width: 10),
                 Expanded(
                   child: Image.asset(products[1]["image"]!, fit: BoxFit.cover),
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Image.asset(products[2]["image"]!, fit: BoxFit.cover),
                 ),
               ],
             ),
@@ -243,11 +251,11 @@ Text(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                  child: Image.asset('assets/cui.jpeg', fit: BoxFit.cover),
+                  child: Image.asset('assets/mark4.png', fit: BoxFit.cover),
                 ),
                 SizedBox(width: 10),
                 Expanded(
-                  child: Image.asset('assets/ordi.jpeg', fit: BoxFit.cover),
+                  child: Image.asset('assets/mark3.png', fit: BoxFit.cover),
                 ),
               ],
             ),

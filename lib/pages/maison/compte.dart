@@ -1,5 +1,4 @@
-import 'package:amimobile5/basedonne/login.dart';
-import 'package:amimobile5/basedonne/signup.dart';
+
 //import 'package:amimobile5/pages/maison/compte_creat.dart';
 //import 'package:amimobile5/pages/maison/compte_id.dart';
 import 'package:flutter/material.dart';
@@ -38,12 +37,12 @@ class ComptePage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Logique pour le premier bouton
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginScreen()),
-                          //builder: (context) => LoginPage()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => LoginScreen()),
+                    //       //builder: (context) => LoginPage()),
+                    // );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink, // Couleur du bouton
@@ -55,11 +54,11 @@ class ComptePage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     // Logique pour le deuxième bouton
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SignUp()),
-                      //MaterialPageRoute(builder: (context) => RegisterPage()),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => const SignUp()),
+                    //   //MaterialPageRoute(builder: (context) => RegisterPage()),
+                    // );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.pink, // Couleur du bouton
